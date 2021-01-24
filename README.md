@@ -31,9 +31,11 @@ Or install it yourself as:
 
 ## Usage
 
+Below are common methods used for dealing with front matter. [See the API documentation](https://thelucid.github.io/ruby_matter/) for details on what arguments can be passed to each.
+
 ### Parse
 
-To parse a string or file containing front matter, use the following methods. [See API documentation](https://thelucid.github.io/ruby_matter/) for details on what arguments can be passed:
+To parse a string or file containing front matter, use the following methods:
 
 * [RubyMatter.parse](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-parse) — new parser from a string.
 * [RubyMatter.read](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-read) — new parser from a file.
@@ -43,7 +45,7 @@ To parse a string or file containing front matter, use the following methods. [S
 
 ### Stringify
 
-To stringify `data`, `content` and optional `excerpt`, using YAML (default) or JSON front matter, use the following methods. See API dicumentation for details on what arguments can be passed:
+To stringify `data`, `content` and optional `excerpt`, using YAML (default) or JSON front matter, use the following method:
 
 * [RubyMatter.stringify](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-stringify) — stringify `data`, `content` and optional `excerpt`.
 

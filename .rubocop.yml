@@ -1,0 +1,12 @@
+AllCops:
+  NewCops: enable
+
+Metrics/ClassLength:
+  Exclude:
+    - lib/front_matter/parser.rb
+
+Metrics/ParameterLists:
+  Exclude:
+    - lib/front_matter.rb
+    - lib/front_matter/parser.rb
+    - lib/front_matter/stringifier.rb

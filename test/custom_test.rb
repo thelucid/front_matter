@@ -2,9 +2,9 @@
 
 require 'test_helper'
 
-class CustomTest < FrontMatter::Test
+class CustomTest < RubyMatter::Test
   test 'allows a custom parser to be registered' do
-    actual = FrontMatter.read(
+    actual = RubyMatter.read(
       fixture('lang-yaml.md'),
       engines: {
         yaml: {

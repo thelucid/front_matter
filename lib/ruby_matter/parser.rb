@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module FrontMatter
+module RubyMatter
   # Parses the supplied +original+ on demand, when the
   # relevant methods are called.
   #
@@ -11,18 +11,18 @@ module FrontMatter
     attr_reader :original
 
     # Instantiate the parser. This should not need to be
-    # called directly, as the FrontMatter module methods
+    # called directly, as the RubyMatter module methods
     # will handle this. For more information, see the
     # following methods that instantiate a parser:
     #
-    # * FrontMatter.parse - new parser from a string.
-    # * FrontMatter.read - new parser from a file.
-    # * FrontMatter.test - test string for front matter.
-    # * FrontMatter.language - extract language from a
+    # * RubyMatter.parse - new parser from a string.
+    # * RubyMatter.read - new parser from a file.
+    # * RubyMatter.test - test string for front matter.
+    # * RubyMatter.language - extract language from a
     #   string containing front matter.
     #
     # == Returns
-    # (FrontMatter::Parser)::
+    # (RubyMatter::Parser)::
     #   An instance of the parser.
     #
     def initialize(
@@ -154,7 +154,7 @@ module FrontMatter
     #   The stringified +data+, +excerpt+, and +content+.
     #
     def stringify
-      FrontMatter::Stringifier.new(
+      RubyMatter::Stringifier.new(
         content,
         data,
         delimiters: @delimiters,

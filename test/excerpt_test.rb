@@ -2,9 +2,9 @@
 
 require 'test_helper'
 
-class ExcerptTest < FrontMatter::Test
+class ExcerptTest < RubyMatter::Test
   test 'gets an excerpt after front matter' do
-    result = FrontMatter.parse(
+    result = RubyMatter.parse(
       "---\nabc: xyz\n---\nfoo\nbar\nbaz\n---\ncontent",
       excerpt: true
     )
@@ -16,7 +16,7 @@ class ExcerptTest < FrontMatter::Test
   end
 
   test 'does not get excerpt when disabled' do
-    result = FrontMatter.parse(
+    result = RubyMatter.parse(
       "---\nabc: xyz\n---\nfoo\nbar\nbaz\n---\ncontent"
     )
 
@@ -27,7 +27,7 @@ class ExcerptTest < FrontMatter::Test
   end
 
   test 'uses a custom separator' do
-    result = FrontMatter.parse(
+    result = RubyMatter.parse(
       "---\nabc: xyz\n---\nfoo\nbar\nbaz\n<!-- endexcerpt -->\ncontent",
       excerpt_separator: '<!-- endexcerpt -->'
     )
@@ -39,7 +39,7 @@ class ExcerptTest < FrontMatter::Test
   end
 
   test 'uses a custom separator when no front matter exists' do
-    result = FrontMatter.parse(
+    result = RubyMatter.parse(
       "foo\nbar\nbaz\n<!-- endexcerpt -->\ncontent",
       excerpt_separator: '<!-- endexcerpt -->'
     )
@@ -51,7 +51,7 @@ class ExcerptTest < FrontMatter::Test
   end
 
   test 'uses a custom function to get excerpt' do
-    result = FrontMatter.parse(
+    result = RubyMatter.parse(
       "---\nabc: xyz\n---\nfoo\nbar\nbaz\n---\ncontent",
       excerpt: ->(instance) { "custom #{instance.data['abc']}" }
     )

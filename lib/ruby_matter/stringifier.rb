@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-module FrontMatter
+module RubyMatter
   # Stringifies +data+, +content+ and optional +excerpt+,
   # based on the arguments supplied to the initializer.
   #
   class Stringifier
     # Instantiate the stringifier. This should not need to
-    # be called directly, as the FrontMatter module methods
+    # be called directly, as the RubyMatter module methods
     # will handle this. For more information, see the
     # following method that instantiates a stringifier:
     #
-    # * FrontMatter.stringify - stringify +data+, +content+ and optional +excerpt+.
+    # * RubyMatter.stringify - stringify +data+, +content+ and optional +excerpt+.
     #
     # == Returns
-    # (FrontMatter::Stringifier)::
+    # (RubyMatter::Stringifier)::
     #   An instance of the stringifier.
     #
     def initialize(

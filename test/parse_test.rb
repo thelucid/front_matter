@@ -2,9 +2,9 @@
 
 require 'test_helper'
 
-class ParseTest < FrontMatter::Test
+class ParseTest < RubyMatter::Test
   test 'parses yaml front matter' do
-    actual = FrontMatter.parse("---\nabc: xyz\n---")
+    actual = RubyMatter.parse("---\nabc: xyz\n---")
     assert actual.respond_to?(:data)
     assert actual.respond_to?(:content)
     assert actual.respond_to?(:original)
@@ -13,41 +13,41 @@ class ParseTest < FrontMatter::Test
 
   test 'retains original string' do
     source = "---\nabc: xyz\n---"
-    actual = FrontMatter.parse(source)
+    actual = RubyMatter.parse(source)
     assert_equal source, actual.original
   end
 
   test 'extra characters should throw parsing errors' do
-    exception = assert_raises(FrontMatter::EngineError) do
-      FrontMatter.parse("---whatever\nabc: xyz\n---").data
+    exception = assert_raises(RubyMatter::EngineError) do
+      RubyMatter.parse("---whatever\nabc: xyz\n---").data
     end
     
-    assert_equal 'FrontMatter::EngineError: whatever', exception.message
+    assert_equal 'RubyMatter::EngineError: whatever', exception.message
   end
 
   test 'boolean yaml types still return the empty object' do
-    actual = FrontMatter.parse("--- true\n---")
+    actual = RubyMatter.parse("--- true\n---")
     assert_equal({}, actual.data)
   end
 
   test 'string yaml types should still return the empty object' do
-    actual = FrontMatter.parse("--- true\n---")
+    actual = RubyMatter.parse("--- true\n---")
     assert_equal({}, actual.data)
   end
 
   test 'number yaml types should still return the empty object' do
-    actual = FrontMatter.parse("--- 42\n---")
+    actual = RubyMatter.parse("--- 42\n---")
     assert_equal({}, actual.data)
   end
 
   test 'raises an error when a string is not passed' do
     assert_raises ArgumentError do
-      FrontMatter.parse
+      RubyMatter.parse
     end
   end
 
   test 'string is zero length' do
-    actual = FrontMatter.parse('')
+    actual = RubyMatter.parse('')
     assert_equal({}, actual.data)
     assert_equal '', actual.content
     assert_equal '', actual.original
@@ -55,7 +55,7 @@ class ParseTest < FrontMatter::Test
 
   test 'parses yaml front matter and content' do
     source = "---\nabc: xyz\nversion: 2\n---\n\n<span class=\"alert alert-info\">This is an alert</span>\n"
-    actual = FrontMatter.parse(source)
+    actual = RubyMatter.parse(source)
     assert_equal({ 'abc' => 'xyz', 'version' => 2 }, actual.data)
     assert_equal "\n<span class=\"alert alert-info\">This is an alert</span>\n", actual.content
     assert_equal source, actual.original
@@ -63,7 +63,7 @@ class ParseTest < FrontMatter::Test
 
   test 'uses a custom delimiter as a string' do
     source = "~~~\nabc: xyz\nversion: 2\n~~~\n\n<span class=\"alert alert-info\">This is an alert</span>\n"
-    actual = FrontMatter.parse(source, delimiters: '~~~')
+    actual = RubyMatter.parse(source, delimiters: '~~~')
     assert_equal({ 'abc' => 'xyz', 'version' => 2 }, actual.data)
     assert_equal "\n<span class=\"alert alert-info\">This is an alert</span>\n", actual.content
     assert_equal source, actual.original
@@ -71,7 +71,7 @@ class ParseTest < FrontMatter::Test
 
   test 'uses custom delimiters as an array' do
     source = "~~~\nabc: xyz\nversion: 2\n~~~\n\n<span class=\"alert alert-info\">This is an alert</span>\n"
-    actual = FrontMatter.parse(source, delimiters: ['~~~'])
+    actual = RubyMatter.parse(source, delimiters: ['~~~'])
     assert_equal({ 'abc' => 'xyz', 'version' => 2 }, actual.data)
     assert_equal "\n<span class=\"alert alert-info\">This is an alert</span>\n", actual.content
     assert_equal source, actual.original
@@ -79,7 +79,7 @@ class ParseTest < FrontMatter::Test
 
   test 'correctly identifies delimiters and ignore strings that look like delimiters' do
     source = "---\nname: \"troublesome --- value\"\n---\nhere is some content\n"
-    actual = FrontMatter.parse(source)
+    actual = RubyMatter.parse(source)
     assert_equal({ 'name' => 'troublesome --- value' }, actual.data)
     assert_equal "here is some content\n", actual.content
     assert_equal "---\nname: \"troublesome --- value\"\n---\nhere is some content\n", actual.original
@@ -87,7 +87,7 @@ class ParseTest < FrontMatter::Test
 
   test 'correctly parses a string that only has an opening delimiter' do
     source = "---\nname: \"troublesome --- value\"\n"
-    actual = FrontMatter.parse(source)
+    actual = RubyMatter.parse(source)
     assert_equal({ 'name' => 'troublesome --- value' }, actual.data)
     assert_equal '', actual.content
     assert_equal "---\nname: \"troublesome --- value\"\n", actual.original
@@ -95,7 +95,7 @@ class ParseTest < FrontMatter::Test
 
   test 'does not try to parse a string has content that looks like front matter' do
     source = "-----------name--------------value\nfoo"
-    actual = FrontMatter.parse(source)
+    actual = RubyMatter.parse(source)
     assert_equal({}, actual.data)
     assert_equal "-----------name--------------value\nfoo", actual.content
     assert_equal "-----------name--------------value\nfoo", actual.original

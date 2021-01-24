@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in front_matter.gemspec
+# Specify your gem's dependencies in ruby_matter.gemspec
 gemspec
 
 group :test do

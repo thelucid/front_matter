@@ -8,11 +8,11 @@ SimpleCov.start do
 end
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
-require 'front_matter'
+require 'ruby_matter'
 
 require 'minitest/autorun'
 
-module FrontMatter
+module RubyMatter
   class Test < Minitest::Test
     # Inspired by: https://api.rubyonrails.org/classes/ActiveSupport/Testing/Declarative.html#method-i-test.
     def self.test(name, &block)

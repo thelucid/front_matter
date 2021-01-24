@@ -2,9 +2,9 @@
 
 require 'test_helper'
 
-class StringifyTest < FrontMatter::Test
+class StringifyTest < RubyMatter::Test
   test 'stringifies parser front matter' do
-    parser = FrontMatter.parse("---\nname: front matter\n---\nName: {{name}}")
+    parser = RubyMatter.parse("---\nname: front matter\n---\nName: {{name}}")
     assert_equal(
       "---\nname: front matter\n---\nName: {{name}}\n",
       parser.stringify
@@ -12,11 +12,11 @@ class StringifyTest < FrontMatter::Test
   end
 
   test 'stringifies from a string' do
-    assert_equal "Name: {{name}}\n", FrontMatter.stringify("Name: {{name}}\n")
+    assert_equal "Name: {{name}}\n", RubyMatter.stringify("Name: {{name}}\n")
   end
 
   test 'uses custom delimiters to stringify' do
-    actual = FrontMatter.stringify(
+    actual = RubyMatter.stringify(
       'Name: {{name}}',
       { 'name' => 'front matter' },
       delimiters: '~~~'
@@ -26,7 +26,7 @@ class StringifyTest < FrontMatter::Test
   end
 
   test 'stringifies an excerpt' do
-    actual = FrontMatter.stringify(
+    actual = RubyMatter.stringify(
       'Name: {{name}}',
       { 'name' => 'front matter' },
       excerpt: 'This is an excerpt.'
@@ -39,7 +39,7 @@ class StringifyTest < FrontMatter::Test
   end
 
   test 'stringifies an excerpt with custom seperator' do
-    actual = FrontMatter.stringify(
+    actual = RubyMatter.stringify(
       'Name: {{name}}',
       { 'name' => 'front matter' },
       excerpt: 'This is an excerpt.',
@@ -55,7 +55,7 @@ class StringifyTest < FrontMatter::Test
   test 'stringifies as json' do
     assert_equal(
       "---\n{\n  \"name\": \"front matter\"\n}\n---\nName: {{name}}\n",
-      FrontMatter.stringify(
+      RubyMatter.stringify(
         "Name: {{name}}\n",
         { 'name' => 'front matter' },
         language: 'json'

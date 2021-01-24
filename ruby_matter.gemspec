@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/front_matter/version'
+require_relative 'lib/ruby_matter/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'front_matter'
-  spec.version       = FrontMatter::VERSION
+  spec.name          = 'ruby_matter'
+  spec.version       = RubyMatter::VERSION
   spec.authors       = ['Jamie Hill']
   spec.email         = ['jamie@thelucid.com']
 
@@ -15,13 +15,13 @@ Gem::Specification.new do |spec|
                         with options to set custom delimiters. Inspired by the \
                         gray-matter JavaScript project.'
 
-  spec.homepage      = 'https://github.com/thelucid/front_matter'
+  spec.homepage      = 'https://github.com/thelucid/ruby_matter'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.7.1')
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/thelucid/front_matter'
-  spec.metadata['changelog_uri'] = 'https://github.com/thelucid/front_matter/blob/main/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/thelucid/ruby_matter'
+  spec.metadata['changelog_uri'] = 'https://github.com/thelucid/ruby_matter/blob/main/CHANGELOG.md'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

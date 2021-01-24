@@ -2,15 +2,15 @@
 
 require 'psych'
 require 'json'
-require 'front_matter/version'
-require 'front_matter/parser'
-require 'front_matter/stringifier'
-require 'front_matter/engine_error'
+require 'ruby_matter/version'
+require 'ruby_matter/parser'
+require 'ruby_matter/stringifier'
+require 'ruby_matter/engine_error'
 
 # Provides the interface for reading, parsing and
 # stringifying front matter.
 #
-module FrontMatter
+module RubyMatter
   DELIMITERS = '---'
   LANGUAGE = 'yaml'
   ALIASES = { 'yml' => 'yaml' }.freeze
@@ -68,7 +68,7 @@ module FrontMatter
   #   to the closing delimiter from +delimiters+.
   #
   # == Returns
-  # (FrontMatter::Parser)::
+  # (RubyMatter::Parser)::
   #   An instance of the parser.
   #
   def self.parse(
@@ -80,7 +80,7 @@ module FrontMatter
     excerpt: nil,
     excerpt_separator: nil
   )
-    FrontMatter::Parser.new(
+    RubyMatter::Parser.new(
       source,
       delimiters: Array(delimiters),
       language: language,
@@ -96,10 +96,10 @@ module FrontMatter
   #   Path to a file containing front matter, for parsing.
   #
   # **options::
-  #   All options get passed to through to FrontMatter.parse.
+  #   All options get passed to through to RubyMatter.parse.
   #
   # == Returns
-  # (FrontMatter::Parser)::
+  # (RubyMatter::Parser)::
   #   An instance of the parser.
   #
   def self.read(filepath, **options)
@@ -120,7 +120,7 @@ module FrontMatter
   #   Whether the source contains front matter.
   #
   def self.test(source, delimiters: DELIMITERS)
-    FrontMatter::Parser.new(source, delimiters: Array(delimiters)).matter?
+    RubyMatter::Parser.new(source, delimiters: Array(delimiters)).matter?
   end
 
   # == Parameters
@@ -138,7 +138,7 @@ module FrontMatter
   #   otherwise +nil+.
   #
   def self.language(source, delimiters: DELIMITERS)
-    FrontMatter::Parser.new(source, delimiters: Array(delimiters)).directive
+    RubyMatter::Parser.new(source, delimiters: Array(delimiters)).directive
   end
 
   # == Parameters
@@ -182,7 +182,7 @@ module FrontMatter
     excerpt: nil,
     excerpt_separator: nil
   )
-    FrontMatter::Stringifier.new(
+    RubyMatter::Stringifier.new(
       content,
       data,
       delimiters: Array(delimiters),

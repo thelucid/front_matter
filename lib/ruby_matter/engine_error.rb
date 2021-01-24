@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module FrontMatter
+module RubyMatter
   # Raised when an engine doesn't exist for a language.
   class EngineError < StandardError
     attr_reader :language

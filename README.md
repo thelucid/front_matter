@@ -1,4 +1,4 @@
-# FrontMatter
+# RubyMatter
 
 Smarter YAML front matter parser for Ruby. Parse front matter from a string or file. Fast, reliable and easy to use. Parses YAML front matter by default, but also has support for JSON front matter, with options to set custom delimiters. Inspired by the [gray-matter](https://github.com/jonschlinkert/gray-matter) JavaScript project.
 
@@ -18,7 +18,7 @@ Smarter YAML front matter parser for Ruby. Parse front matter from a string or f
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'front_matter'
+gem 'ruby_matter'
 ```
 
 And then execute:
@@ -27,7 +27,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install front_matter
+    $ gem install ruby_matter
 
 ## Usage
 
@@ -35,17 +35,17 @@ Or install it yourself as:
 
 To parse a string or file containing front matter, use the following methods. See API dicumentation for details on what arguments can be passed:
 
-* FrontMatter.parse — new parser from a string.
-* FrontMatter.read — new parser from a file.
-* FrontMatter.test — test string for front matter.
-* FrontMatter.language — extract language from a
+* RubyMatter.parse — new parser from a string.
+* RubyMatter.read — new parser from a file.
+* RubyMatter.test — test string for front matter.
+* RubyMatter.language — extract language from a
   string containing front matter.
 
 ### Stringify
 
 To stringify `data`, `content` and optional `excerpt`, using YAML (default) or JSON front matter, use the following methods. See API dicumentation for details on what arguments can be passed:
 
-* FrontMatter.stringify — stringify `data`, `content` and optional `excerpt`.
+* RubyMatter.stringify — stringify `data`, `content` and optional `excerpt`.
 
 ## Development
 
@@ -55,7 +55,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/thelucid/front_matter.
+Bug reports and pull requests are welcome on GitHub at https://github.com/thelucid/ruby_matter.
 
 
 ## License

@@ -45,7 +45,7 @@ To parse a string or file containing front matter, use the following methods. Se
 
 To stringify `data`, `content` and optional `excerpt`, using YAML (default) or JSON front matter, use the following methods. See API dicumentation for details on what arguments can be passed:
 
-* FrontMatter.stringify — stringify +data+, +content+ and optional +excerpt+.
+* FrontMatter.stringify — stringify `data`, `content` and optional `excerpt`.
 
 ## Development
 

@@ -33,19 +33,23 @@ Or install it yourself as:
 
 ### Parse
 
-To parse a string or file containing front matter, use the following methods. See API dicumentation for details on what arguments can be passed:
+To parse a string or file containing front matter, use the following methods. [See API documentation](https://thelucid.github.io/ruby_matter/) for details on what arguments can be passed:
 
-* RubyMatter.parse — new parser from a string.
-* RubyMatter.read — new parser from a file.
-* RubyMatter.test — test string for front matter.
-* RubyMatter.language — extract language from a
+* [RubyMatter.parse](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-parse) — new parser from a string.
+* [RubyMatter.read](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-read) — new parser from a file.
+* [RubyMatter.test](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-test) — test string for front matter.
+* [RubyMatter.language](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-language) — extract language from a
   string containing front matter.
 
 ### Stringify
 
 To stringify `data`, `content` and optional `excerpt`, using YAML (default) or JSON front matter, use the following methods. See API dicumentation for details on what arguments can be passed:
 
-* RubyMatter.stringify — stringify `data`, `content` and optional `excerpt`.
+* [RubyMatter.stringify](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-stringify) — stringify `data`, `content` and optional `excerpt`.
+
+### API
+
+[Full RubyMatter API documentation can be found here](https://thelucid.github.io/ruby_matter/).
 
 ## Development
 

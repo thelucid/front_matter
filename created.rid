@@ -1,7 +1,7 @@
-Sun, 24 Jan 2021 17:37:57 -0000
-README.md	Sun, 24 Jan 2021 17:37:53 +0000
-lib/ruby_matter.rb	Sun, 24 Jan 2021 17:37:53 +0000
-lib/ruby_matter/engine_error.rb	Sun, 24 Jan 2021 17:37:53 +0000
-lib/ruby_matter/parser.rb	Sun, 24 Jan 2021 17:37:53 +0000
-lib/ruby_matter/stringifier.rb	Sun, 24 Jan 2021 17:37:53 +0000
-lib/ruby_matter/version.rb	Sun, 24 Jan 2021 17:37:53 +0000
+Sun, 24 Jan 2021 17:53:21 -0000
+README.md	Sun, 24 Jan 2021 17:53:18 +0000
+lib/ruby_matter.rb	Sun, 24 Jan 2021 17:53:18 +0000
+lib/ruby_matter/engine_error.rb	Sun, 24 Jan 2021 17:53:18 +0000
+lib/ruby_matter/parser.rb	Sun, 24 Jan 2021 17:53:18 +0000
+lib/ruby_matter/stringifier.rb	Sun, 24 Jan 2021 17:53:18 +0000
+lib/ruby_matter/version.rb	Sun, 24 Jan 2021 17:53:18 +0000

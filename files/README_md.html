@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>README.md</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            README.md
+        </h1>
+        <ul class="files">
+            <li>README.md</li>
+            <li>Last modified: 2021-01-24 17:37:53 +0000</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<h1 id="label-RubyMatter"><a href="../classes/RubyMatter.html"><code>RubyMatter</code></a></h1>
+
+<p>Smarter YAML front matter parser for Ruby. Parse front matter from a string or file. Fast, reliable and easy to use. Parses YAML front matter by default, but also has support for JSON front matter, with options to set custom delimiters. Inspired by the <a href="https://github.com/jonschlinkert/gray-matter">gray-matter</a> JavaScript project.</p>
+
+<h2 id="label-Features">Features</h2>
+<ul><li>
+<p><strong>Simple</strong>: a <code>parse</code> method accepts a string and returns a parser object that extracts the relevent <code>data</code>, <code>content</code>, optional <code>excerpt</code> and more. Whilst the <code>stringify</code> method compiles those elements back down to a single string.</p>
+</li><li>
+<p><strong>Accurate</strong>: better at handling edge cases than front matter parsers that rely on regex for parsing.</p>
+</li><li>
+<p><strong>Fast</strong>: faster than other front matter parsers that use regex for parsing.</p>
+</li><li>
+<p><strong>Flexible</strong>: by default, is capable of parsing <a href="https://github.com/nodeca/js-yaml">YAML</a> and <a href="http://en.wikipedia.org/wiki/Json">JSON</a> front matter. Other engines may be added.</p>
+</li><li>
+<p><strong>Extensible</strong>: use custom delimiters, or add support for any language, like <a href="http://github.com/mojombo/toml">TOML</a>, <a href="http://coffeescript.org">CoffeeScript</a>, or <a href="https://github.com/bevry/cson">CSON</a>.</p>
+</li><li>
+<p><strong>Documented</strong>: full API documentation with SDoc (RDoc derivative used by Rails).</p>
+</li><li>
+<p><strong>Tested</strong>: full test suite with 100% coverage, and feature parity with <a href="https://github.com/jonschlinkert/gray-matter">gray-matter</a>.</p>
+</li><li>
+<p><strong>Safe</strong>: designed with untrusted user input in mind.</p>
+</li></ul>
+
+<h2 id="label-Installation">Installation</h2>
+
+<p>Add this line to your application&#39;s Gemfile:</p>
+
+<pre><code>gem &#39;ruby_matter&#39;
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install ruby_matter
+</code></pre>
+
+<h2 id="label-Usage">Usage</h2>
+
+<h3 id="label-Parse">Parse</h3>
+
+<p>To parse a string or file containing front matter, use the following methods. See API dicumentation for details on what arguments can be passed:</p>
+<ul><li>
+<p><a href="../classes/RubyMatter.html#method-c-parse"><code>RubyMatter.parse</code></a> — new parser from a string.</p>
+</li><li>
+<p><a href="../classes/RubyMatter.html#method-c-read"><code>RubyMatter.read</code></a> — new parser from a file.</p>
+</li><li>
+<p><a href="../classes/RubyMatter.html#method-c-test"><code>RubyMatter.test</code></a> — test string for front matter.</p>
+</li><li>
+<p><a href="../classes/RubyMatter.html#method-c-language"><code>RubyMatter.language</code></a> — extract language from a  string containing front matter.</p>
+</li></ul>
+
+<h3 id="label-Stringify">Stringify</h3>
+
+<p>To stringify <code>data</code>, <code>content</code> and optional <code>excerpt</code>, using YAML (default) or JSON front matter, use the following methods. See API dicumentation for details on what arguments can be passed:</p>
+<ul><li>
+<p><a href="../classes/RubyMatter.html#method-c-stringify"><code>RubyMatter.stringify</code></a> — stringify <code>data</code>, <code>content</code> and optional <code>excerpt</code>.</p>
+</li></ul>
+
+<h2 id="label-Development">Development</h2>
+
+<p>After checking out the repo, run <code>bin/setup</code> to install dependencies. Then, run <code>rake test</code> to run the tests. You can also run <code>bin/console</code> for an interactive prompt that will allow you to experiment.</p>
+
+<p>To install this gem onto your local machine, run <code>bundle exec rake install</code>. To release a new version, update the version number in <code>version.rb</code>, and then run <code>bundle exec rake release</code>, which will create a git tag for the version, push git commits and tags, and push the <code>.gem</code> file to <a href="https://rubygems.org">rubygems.org</a>.</p>
+
+<h2 id="label-Contributing">Contributing</h2>
+
+<p>Bug reports and pull requests are welcome on GitHub at <a href="https://github.com/thelucid/ruby_matter">github.com/thelucid/ruby_matter</a>.</p>
+
+<h2 id="label-License">License</h2>
+
+<p>The gem is available as open source under the terms of the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+    
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

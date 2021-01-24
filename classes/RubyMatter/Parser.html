@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RubyMatter::Parser</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="RubyMatter::Parser">
+
+  
+    
+    <meta name="description" content="Parses the supplied original on demand, when the relevant methods are called.">
+    <meta property="og:description" content="Parses the supplied original on demand, when the relevant methods are called.">
+  
+
+    <meta name="keywords" content="RubyMatter::Parser class">
+  
+    <meta name="keywords" content="new, data, excerpt, content, matter, matter?, empty, empty?, directive, stringify">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            RubyMatter::Parser
+            
+                <span class="parent">&lt;
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/ruby_matter/parser_rb.html">lib/ruby_matter/parser.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Parses the supplied <code>original</code> on demand, when the relevant methods are called.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-content">content</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-data">data</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-directive">directive</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-empty">empty</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-empty-3F">empty?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-excerpt">excerpt</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-matter">matter</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-matter-3F">matter?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-stringify">stringify</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">COMMENT</td>
+            <td>=</td>
+            <td class="attr-value">&quot;^\s*#[^\n]+&quot;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">NEWLINE</td>
+            <td>=</td>
+            <td class="attr-value">&quot;\r?\n&quot;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>original</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>( source, delimiters:, language: nil, aliases: {}, engines: {}, excerpt: nil, excerpt_separator: nil )
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Instantiate the parser. This should not need to be called directly, as the <a href="../RubyMatter.html"><code>RubyMatter</code></a> module methods will handle this. For more information, see the following methods that instantiate a parser:</p>
+<ul><li>
+<p><a href="../RubyMatter.html#method-c-parse"><code>RubyMatter.parse</code></a> - new parser from a string.</p>
+</li><li>
+<p><a href="../RubyMatter.html#method-c-read"><code>RubyMatter.read</code></a> - new parser from a file.</p>
+</li><li>
+<p><a href="../RubyMatter.html#method-c-test"><code>RubyMatter.test</code></a> - test string for front matter.</p>
+</li><li>
+<p><a href="../RubyMatter.html#method-c-language"><code>RubyMatter.language</code></a> - extract language from a string containing front matter.</p>
+</li></ul>
+
+<h2 id="method-c-new-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(<a href="Parser.html"><code>RubyMatter::Parser</code></a>)
+<dd>
+<p>An instance of the parser.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+  <span class="ruby-identifier">source</span>,
+  <span class="ruby-value">delimiters:</span>,
+  <span class="ruby-value">language:</span> <span class="ruby-keyword">nil</span>,
+  <span class="ruby-value">aliases:</span> {},
+  <span class="ruby-value">engines:</span> {},
+  <span class="ruby-value">excerpt:</span> <span class="ruby-keyword">nil</span>,
+  <span class="ruby-value">excerpt_separator:</span> <span class="ruby-keyword">nil</span>
+)
+  <span class="ruby-ivar">@original</span> = <span class="ruby-identifier">source</span>
+  <span class="ruby-ivar">@delimiters</span> = <span class="ruby-identifier">delimiters</span>
+  <span class="ruby-ivar">@language_default</span> = <span class="ruby-identifier">language</span>
+  <span class="ruby-ivar">@aliases</span> = <span class="ruby-identifier">aliases</span>
+  <span class="ruby-ivar">@engines</span> = <span class="ruby-identifier">engines</span>
+  <span class="ruby-ivar">@excerpt</span> = <span class="ruby-identifier">excerpt</span>
+  <span class="ruby-ivar">@excerpt_separator</span> = <span class="ruby-identifier">excerpt_separator</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-content">
+            
+              <b>content</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-content" name="method-i-content" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Extracts the content from the front matter.</p>
+
+<h2 id="method-i-content-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String)
+<dd>
+<p>The content found in the source.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-content_source')" id="l_method-i-content_source">show</a>
+                
+              </p>
+              <div id="method-i-content_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">content</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@original</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">matter?</span>
+
+  <span class="ruby-identifier">finish</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">size</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@original</span>[<span class="ruby-identifier">after</span><span class="ruby-operator">..</span>].<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/^#{NEWLINE}/</span>, <span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-data">
+            
+              <b>data</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-data" name="method-i-data" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Extracts the data from the front matter.</p>
+
+<h2 id="method-i-data-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(Hash)
+<dd>
+<p>The data found in the front matter.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-data_source')" id="l_method-i-data_source">show</a>
+                
+              </p>
+              <div id="method-i-data_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">data</span>
+  <span class="ruby-keyword">return</span> {} <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block?</span>
+
+  <span class="ruby-identifier">engine</span>[<span class="ruby-value">:parse</span>].<span class="ruby-identifier">call</span>(<span class="ruby-identifier">matter</span>).<span class="ruby-identifier">then</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">:</span> {}
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-directive">
+            
+              <b>directive</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-directive" name="method-i-directive" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>The language extracted from the front matter.</p>
+
+<h2 id="method-i-directive-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String)
+<dd>
+<p>The raw directive string within the front matter.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-directive_source')" id="l_method-i-directive_source">show</a>
+                
+              </p>
+              <div id="method-i-directive_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 138</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">directive</span>
+  <span class="ruby-ivar">@directive</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">extract_directive</span>.<span class="ruby-identifier">then</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">raw</span><span class="ruby-operator">|</span>
+    (<span class="ruby-identifier">raw</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">raw</span>.<span class="ruby-identifier">strip</span>).<span class="ruby-identifier">then</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      { <span class="ruby-value">raw:</span> <span class="ruby-identifier">raw</span>, <span class="ruby-value">name:</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">name</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-empty">
+            
+              <b>empty</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-empty" name="method-i-empty" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>When the front matter is empty (either all whitespace, nothing at all, or just comments and no data), the original string is set on this property.</p>
+
+<h2 id="method-i-empty-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String|nil)
+<dd>
+<p>If the front matter was empty, this is the raw front matter, otherwise <code>nil</code>.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-empty_source')" id="l_method-i-empty_source">show</a>
+                
+              </p>
+              <div id="method-i-empty_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty</span>
+  <span class="ruby-ivar">@empty</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@original</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-empty-3F">
+            
+              <b>empty?</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-empty-3F" name="method-i-empty-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Whether the front matter is empty.</p>
+
+<h2 id="method-i-empty-3F-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(Boolean)
+<dd>
+<p>Evaluates to <code>true</code> if front matter is empty.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-empty-3F_source')" id="l_method-i-empty-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-empty-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empty?</span>
+  <span class="ruby-identifier">empty</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-excerpt">
+            
+              <b>excerpt</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-excerpt" name="method-i-excerpt" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>If enabled, extracts the excerpt after front matter.</p>
+
+<h2 id="method-i-excerpt-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String|nil)
+<dd>
+<p>The excerpt, or <code>nil</code>.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-excerpt_source')" id="l_method-i-excerpt_source">show</a>
+                
+              </p>
+              <div id="method-i-excerpt_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">excerpt</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@excerpt</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@excerpt_separator</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@excerpt</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@excerpt</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:call</span>)
+
+  <span class="ruby-identifier">content</span>.<span class="ruby-identifier">index</span>(
+    <span class="ruby-ivar">@excerpt</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@excerpt</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@excerpt_separator</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">opening</span>
+  ).<span class="ruby-identifier">then</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">index</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">content</span>[<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">index</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-matter">
+            
+              <b>matter</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-matter" name="method-i-matter" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Extracts the raw front matter block.</p>
+
+<h2 id="method-i-matter-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String)
+<dd>
+<p>The raw front matter found in the source.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-matter_source')" id="l_method-i-matter_source">show</a>
+                
+              </p>
+              <div id="method-i-matter_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matter</span>
+  <span class="ruby-ivar">@matter</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">matter?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@original</span>[<span class="ruby-identifier">start</span><span class="ruby-operator">...</span><span class="ruby-identifier">finish</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-matter-3F">
+            
+              <b>matter?</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-matter-3F" name="method-i-matter-3F" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Whether the source has front matter.</p>
+
+<h2 id="method-i-matter-3F-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(Boolean)
+<dd>
+<p>Evaluates to <code>true</code> if front matter is present.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-matter-3F_source')" id="l_method-i-matter-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-matter-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">matter?</span>
+  <span class="ruby-ivar">@original</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-identifier">opening</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@original</span>[<span class="ruby-identifier">opening</span>.<span class="ruby-identifier">size</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">opening</span>[<span class="ruby-value">-1</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stringify">
+            
+              <b>stringify</b>()
+            
+            <a href="../../classes/RubyMatter/Parser.html#method-i-stringify" name="method-i-stringify" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Stringifies using the supplied <code>delimiters</code>, <code>language</code>, <code>engines</code> and optional <code>excerpt</code>. By default, only YAML and JSON can be stringified. See the <code>engines</code> argument for to go about stringifying other languages.</p>
+
+<h2 id="method-i-stringify-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String)
+<dd>
+<p>The stringified <code>data</code>, <code>excerpt</code>, and <code>content</code>.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-stringify_source')" id="l_method-i-stringify_source">show</a>
+                
+              </p>
+              <div id="method-i-stringify_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/parser.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stringify</span>
+  <span class="ruby-constant">RubyMatter</span><span class="ruby-operator">::</span><span class="ruby-constant">Stringifier</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">content</span>,
+    <span class="ruby-identifier">data</span>,
+    <span class="ruby-value">delimiters:</span> <span class="ruby-ivar">@delimiters</span>,
+    <span class="ruby-value">language:</span> <span class="ruby-identifier">language</span>,
+    <span class="ruby-value">engines:</span> <span class="ruby-ivar">@engines</span>,
+    <span class="ruby-value">excerpt:</span> <span class="ruby-identifier">excerpt</span>,
+    <span class="ruby-value">excerpt_separator:</span> <span class="ruby-ivar">@excerpt_separator</span>
+  ).<span class="ruby-identifier">stringify</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

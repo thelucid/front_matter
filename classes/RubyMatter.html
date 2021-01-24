@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RubyMatter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="RubyMatter">
+
+  
+    
+    <meta name="description" content="Provides the interface for reading, parsing and stringifying front matter.">
+    <meta property="og:description" content="Provides the interface for reading, parsing and stringifying front matter.">
+  
+
+    <meta name="keywords" content="RubyMatter class">
+  
+    <meta name="keywords" content="parse, read, test, language, stringify">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span>
+            RubyMatter
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/lib/ruby_matter_rb.html">lib/ruby_matter.rb</a></li>
+            
+            <li><a href="../files/lib/ruby_matter/engine_error_rb.html">lib/ruby_matter/engine_error.rb</a></li>
+            
+            <li><a href="../files/lib/ruby_matter/parser_rb.html">lib/ruby_matter/parser.rb</a></li>
+            
+            <li><a href="../files/lib/ruby_matter/stringifier_rb.html">lib/ruby_matter/stringifier.rb</a></li>
+            
+            <li><a href="../files/lib/ruby_matter/version_rb.html">lib/ruby_matter/version.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Provides the interface for reading, parsing and stringifying front matter.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RubyMatter/EngineError.html">RubyMatter::EngineError</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RubyMatter/Parser.html">RubyMatter::Parser</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="RubyMatter/Stringifier.html">RubyMatter::Stringifier</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-language">language</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-parse">parse</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-read">read</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-stringify">stringify</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-test">test</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">DELIMITERS</td>
+            <td>=</td>
+            <td class="attr-value">&#39;---&#39;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">LANGUAGE</td>
+            <td>=</td>
+            <td class="attr-value">&#39;yaml&#39;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ALIASES</td>
+            <td>=</td>
+            <td class="attr-value">{ &#39;yml&#39; =&gt; &#39;yaml&#39; }.freeze</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ENGINES</td>
+            <td>=</td>
+            <td class="attr-value">{
+yaml: {
+parse: -&gt;(yaml) { Psych.safe_load(yaml) },
+stringify: -&gt;(hash) { Psych.dump(hash).sub(/^---(\n|\s)?/, &#39;&#39;) }
+},
+json: {
+parse: -&gt;(json) { JSON.parse(json) },
+stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
+}
+}.freeze</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">VERSION</td>
+            <td>=</td>
+            <td class="attr-value">&#39;0.9.2&#39;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-language">
+            
+              <b>language</b>(source, delimiters: DELIMITERS)
+            
+            <a href="../classes/RubyMatter.html#method-c-language" name="method-c-language" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <h2 id="method-c-language-label-Parameters">Parameters</h2>
+<dl class="rdoc-list note-list"><dt>source (String)
+<dd>
+<p>A string to extract front matter language from.</p>
+</dd><dt>delimiters (Array|String)
+<dd>
+<p>Opening and closing delimiters. When a string is supplied, it is used as both delimiters. Defaults to &#39;---&#39;, as defined in <code>DELIMITERS</code> constant.</p>
+</dd></dl>
+
+<h2 id="method-c-language-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String|nil)
+<dd>
+<p>The front matter language directive if it exists, otherwise <code>nil</code>.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-language_source')" id="l_method-c-language_source">show</a>
+                
+              </p>
+              <div id="method-c-language_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">language</span>(<span class="ruby-identifier">source</span>, <span class="ruby-value">delimiters:</span> <span class="ruby-constant">DELIMITERS</span>)
+  <span class="ruby-constant">RubyMatter</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">source</span>, <span class="ruby-value">delimiters:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">delimiters</span>)).<span class="ruby-identifier">directive</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-parse">
+            
+              <b>parse</b>( source, delimiters: DELIMITERS, language: LANGUAGE, aliases: ALIASES, engines: ENGINES, excerpt: nil, excerpt_separator: nil )
+            
+            <a href="../classes/RubyMatter.html#method-c-parse" name="method-c-parse" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <h2 id="method-c-parse-label-Parameters">Parameters</h2>
+
+<p>Returns a parser instance that extracts <code>content</code>, <code>data</code>, <code>excerpt</code> and the raw <code>matter</code>. If the matter was empty, then an <code>empty</code> value is available containiing the empty front matter with comments.</p>
+<dl class="rdoc-list note-list"><dt>source (String)
+<dd>
+<p>The source containing front matter, for parsing.</p>
+</dd><dt>delimiters (Array|String)
+<dd>
+<p>Opening and closing delimiters. When a string is supplied, it is used as both delimiters. Defaults to &#39;---&#39;, as defined in <code>DELIMITERS</code> constant.</p>
+</dd><dt>language (String)
+<dd>
+<p>The front matter language to use when no directive is supplied within the matter itself. Defaults to &#39;yaml&#39;, as defined in <code>LANGUAGE</code> constant.</p>
+</dd><dt>aliases (Hash)
+<dd>
+<p>Used to map language aliases, for example &#39;yaml&#39; can also be referenced as &#39;yml&#39;. This is the default, as defined in the <code>ALIASES</code> constant.</p>
+</dd><dt>engines (Hash)
+<dd>
+<p>A hash of engines, where the key is the language, and the value is a hash containing a <code>:parse</code> lambda and a <code>:stringify</code> lamda. Defaults to &#39;yaml&#39; and &#39;json&#39; engines, as defined in the <code>ENGINES</code> constant.</p>
+</dd><dt>excerpt (Boolean|Proc)
+<dd>
+<p>When <code>true</code>, extracts the excerpt up to a matching <code>excerpt_seperator</code>; or the closing delimiter from the <code>delimiters</code> argument by default. When a lambda is supplied, it is called with the parser instance as an argument, and is expected to return the excerpt.</p>
+</dd><dt>excerpt_seperator (String)
+<dd>
+<p>Used to specify a custom excerpt seperator. Defaults to the closing delimiter from <code>delimiters</code>.</p>
+</dd></dl>
+
+<h2 id="method-c-parse-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(<a href="RubyMatter/Parser.html"><code>RubyMatter::Parser</code></a>)
+<dd>
+<p>An instance of the parser.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-parse_source')" id="l_method-c-parse_source">show</a>
+                
+              </p>
+              <div id="method-c-parse_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">parse</span>(
+  <span class="ruby-identifier">source</span>,
+  <span class="ruby-value">delimiters:</span> <span class="ruby-constant">DELIMITERS</span>,
+  <span class="ruby-value">language:</span> <span class="ruby-constant">LANGUAGE</span>,
+  <span class="ruby-value">aliases:</span> <span class="ruby-constant">ALIASES</span>,
+  <span class="ruby-value">engines:</span> <span class="ruby-constant">ENGINES</span>,
+  <span class="ruby-value">excerpt:</span> <span class="ruby-keyword">nil</span>,
+  <span class="ruby-value">excerpt_separator:</span> <span class="ruby-keyword">nil</span>
+)
+  <span class="ruby-constant">RubyMatter</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">source</span>,
+    <span class="ruby-value">delimiters:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">delimiters</span>),
+    <span class="ruby-value">language:</span> <span class="ruby-identifier">language</span>,
+    <span class="ruby-value">aliases:</span> <span class="ruby-identifier">aliases</span>,
+    <span class="ruby-value">engines:</span> <span class="ruby-identifier">engines</span>.<span class="ruby-identifier">transform_keys</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>),
+    <span class="ruby-value">excerpt:</span> <span class="ruby-identifier">excerpt</span>,
+    <span class="ruby-value">excerpt_separator:</span> <span class="ruby-identifier">excerpt_separator</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-read">
+            
+              <b>read</b>(filepath, **options)
+            
+            <a href="../classes/RubyMatter.html#method-c-read" name="method-c-read" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <h2 id="method-c-read-label-Parameters">Parameters</h2>
+<dl class="rdoc-list note-list"><dt>filepath (String)
+<dd>
+<p>Path to a file containing front matter, for parsing.</p>
+</dd><dt>**options
+<dd>
+<p>All options get passed to through to <a href="RubyMatter.html#method-c-parse"><code>RubyMatter.parse</code></a>.</p>
+</dd></dl>
+
+<h2 id="method-c-read-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(<a href="RubyMatter/Parser.html"><code>RubyMatter::Parser</code></a>)
+<dd>
+<p>An instance of the parser.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-read_source')" id="l_method-c-read_source">show</a>
+                
+              </p>
+              <div id="method-c-read_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">read</span>(<span class="ruby-identifier">filepath</span>, <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">parse</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">filepath</span>), <span class="ruby-operator">**</span><span class="ruby-identifier">options</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-stringify">
+            
+              <b>stringify</b>( content, data = {}, delimiters: DELIMITERS, language: LANGUAGE, engines: ENGINES, excerpt: nil, excerpt_separator: nil )
+            
+            <a href="../classes/RubyMatter.html#method-c-stringify" name="method-c-stringify" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <h2 id="method-c-stringify-label-Parameters">Parameters</h2>
+<dl class="rdoc-list note-list"><dt>content (String)
+<dd>
+<p>The content string that follows the from-matter.</p>
+</dd><dt>delimiters (Array|String)
+<dd>
+<p>Opening and closing delimiters. When a string is supplied, it is used as both delimiters. Defaults to &#39;---&#39;, as defined in <code>DELIMITERS</code> constant.</p>
+</dd><dt>language (String)
+<dd>
+<p>The front matter language to use when stringifying the data. Defaults to &#39;yaml&#39;, as defined in <code>LANGUAGE</code> constant.</p>
+</dd><dt>engines (Hash)
+<dd>
+<p>A hash of engines, where the key is the language, and the value is a hash containing a <code>:parse</code> lambda and a <code>:stringify</code> lamda. Defaults to &#39;yaml&#39; and &#39;json&#39; engines, as defined in the <code>ENGINES</code> constant.</p>
+</dd><dt>excerpt (String)
+<dd>
+<p>The exerpt that comes before the <code>excerpt_seperator</code>.</p>
+</dd><dt>excerpt_seperator (String)
+<dd>
+<p>Used to specify a custom excerpt seperator. Defaults to the closing delimiter from <code>delimiters</code>.</p>
+</dd></dl>
+
+<h2 id="method-c-stringify-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String)
+<dd>
+<p>An string containing front matter, optional excerpt, and content.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-stringify_source')" id="l_method-c-stringify_source">show</a>
+                
+              </p>
+              <div id="method-c-stringify_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">stringify</span>(
+  <span class="ruby-identifier">content</span>,
+  <span class="ruby-identifier">data</span> = {},
+  <span class="ruby-value">delimiters:</span> <span class="ruby-constant">DELIMITERS</span>,
+  <span class="ruby-value">language:</span> <span class="ruby-constant">LANGUAGE</span>,
+  <span class="ruby-value">engines:</span> <span class="ruby-constant">ENGINES</span>,
+  <span class="ruby-value">excerpt:</span> <span class="ruby-keyword">nil</span>,
+  <span class="ruby-value">excerpt_separator:</span> <span class="ruby-keyword">nil</span>
+)
+  <span class="ruby-constant">RubyMatter</span><span class="ruby-operator">::</span><span class="ruby-constant">Stringifier</span>.<span class="ruby-identifier">new</span>(
+    <span class="ruby-identifier">content</span>,
+    <span class="ruby-identifier">data</span>,
+    <span class="ruby-value">delimiters:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">delimiters</span>),
+    <span class="ruby-value">language:</span> <span class="ruby-identifier">language</span>,
+    <span class="ruby-value">engines:</span> <span class="ruby-identifier">engines</span>.<span class="ruby-identifier">transform_keys</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>),
+    <span class="ruby-value">excerpt:</span> <span class="ruby-identifier">excerpt</span>,
+    <span class="ruby-value">excerpt_separator:</span> <span class="ruby-identifier">excerpt_separator</span>
+  ).<span class="ruby-identifier">stringify</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-test">
+            
+              <b>test</b>(source, delimiters: DELIMITERS)
+            
+            <a href="../classes/RubyMatter.html#method-c-test" name="method-c-test" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <h2 id="method-c-test-label-Parameters">Parameters</h2>
+<dl class="rdoc-list note-list"><dt>source (String)
+<dd>
+<p>A string to test for front matter.</p>
+</dd><dt>delimiters (Array|String)
+<dd>
+<p>Opening and closing delimiters. When a string is supplied, it is used as both delimiters. Defaults to &#39;---&#39;, as defined in <code>DELIMITERS</code> constant.</p>
+</dd></dl>
+
+<h2 id="method-c-test-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(Boolean)
+<dd>
+<p>Whether the source contains front matter.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-test_source')" id="l_method-c-test_source">show</a>
+                
+              </p>
+              <div id="method-c-test_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">test</span>(<span class="ruby-identifier">source</span>, <span class="ruby-value">delimiters:</span> <span class="ruby-constant">DELIMITERS</span>)
+  <span class="ruby-constant">RubyMatter</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">source</span>, <span class="ruby-value">delimiters:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">delimiters</span>)).<span class="ruby-identifier">matter?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

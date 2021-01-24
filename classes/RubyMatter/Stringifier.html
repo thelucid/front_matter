@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>RubyMatter::Stringifier</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <meta property="og:title" value="RubyMatter::Stringifier">
+
+  
+    
+    <meta name="description" content="Stringifies data, content and optional excerpt, based on the arguments supplied to the initializer.">
+    <meta property="og:description" content="Stringifies data, content and optional excerpt, based on the arguments supplied to the initializer.">
+  
+
+    <meta name="keywords" content="RubyMatter::Stringifier class">
+  
+    <meta name="keywords" content="new, stringify">
+  
+</head>
+
+<body>
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span>
+            RubyMatter::Stringifier
+            
+                <span class="parent">&lt;
+                    
+                    Object
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/ruby_matter/stringifier_rb.html">lib/ruby_matter/stringifier.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Stringifies <code>data</code>, <code>content</code> and optional <code>excerpt</code>, based on the arguments supplied to the initializer.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-stringify">stringify</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>( content, data, delimiters:, language: nil, engines: {}, excerpt: nil, excerpt_separator: nil )
+            
+            <a href="../../classes/RubyMatter/Stringifier.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Instantiate the stringifier. This should not need to be called directly, as the <a href="../RubyMatter.html"><code>RubyMatter</code></a> module methods will handle this. For more information, see the following method that instantiates a stringifier:</p>
+<ul><li>
+<p><a href="../RubyMatter.html#method-c-stringify"><code>RubyMatter.stringify</code></a> - stringify <code>data</code>, <code>content</code> and optional <code>excerpt</code>.</p>
+</li></ul>
+
+<h2 id="method-c-new-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(<a href="Stringifier.html"><code>RubyMatter::Stringifier</code></a>)
+<dd>
+<p>An instance of the stringifier.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/stringifier.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(
+  <span class="ruby-identifier">content</span>,
+  <span class="ruby-identifier">data</span>,
+  <span class="ruby-value">delimiters:</span>,
+  <span class="ruby-value">language:</span> <span class="ruby-keyword">nil</span>,
+  <span class="ruby-value">engines:</span> {},
+  <span class="ruby-value">excerpt:</span> <span class="ruby-keyword">nil</span>,
+  <span class="ruby-value">excerpt_separator:</span> <span class="ruby-keyword">nil</span>
+)
+  <span class="ruby-ivar">@content</span> = <span class="ruby-identifier">content</span>
+  <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">data</span>
+  <span class="ruby-ivar">@delimiters</span> = <span class="ruby-identifier">delimiters</span>
+  <span class="ruby-ivar">@language</span> = <span class="ruby-identifier">language</span>
+  <span class="ruby-ivar">@engines</span> = <span class="ruby-identifier">engines</span>
+  <span class="ruby-ivar">@excerpt</span> = <span class="ruby-identifier">excerpt</span>
+  <span class="ruby-ivar">@excerpt_separator</span> = <span class="ruby-identifier">excerpt_separator</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-stringify">
+            
+              <b>stringify</b>()
+            
+            <a href="../../classes/RubyMatter/Stringifier.html#method-i-stringify" name="method-i-stringify" class="permalink">Link</a>
+          </div>
+
+          
+            <div class="description">
+              <p>Stringifies <code>content</code>, <code>data</code>, and optional <code>excerpt</code>, using the <code>delimiters</code>, <code>language</code> and <code>engines</code>.</p>
+
+<h2 id="method-i-stringify-label-Returns">Returns</h2>
+<dl class="rdoc-list note-list"><dt>(String)
+<dd>
+<p>The result of stringifying the supplied arguments.</p>
+</dd></dl>
+            </div>
+          
+
+          
+
+          
+
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source:
+                <a href="javascript:toggleSource('method-i-stringify_source')" id="l_method-i-stringify_source">show</a>
+                
+              </p>
+              <div id="method-i-stringify_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/ruby_matter/stringifier.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">stringify</span>
+  <span class="ruby-identifier">matter</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">excerpt</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">content</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+      
+    
+  
+</div>
+
+    </div>
+  </body>
+</html>

@@ -47,10 +47,6 @@ To stringify `data`, `content` and optional `excerpt`, using YAML (default) or J
 
 * [RubyMatter.stringify](https://thelucid.github.io/ruby_matter/classes/RubyMatter.html#method-c-stringify) — stringify `data`, `content` and optional `excerpt`.
 
-### API
-
-[Full RubyMatter API documentation can be found here](https://thelucid.github.io/ruby_matter/).
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

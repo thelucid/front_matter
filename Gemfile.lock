@@ -43,10 +43,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ruby_matter!
   minitest (~> 5.0)
   rake (~> 12.0)
   rubocop (~> 1.8)
+  ruby_matter!
   sdoc (>= 2.0.3)
   simplecov (>= 0.21.2)
 

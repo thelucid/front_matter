@@ -234,7 +234,7 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
           <tr valign='top'>
             <td class="attr-name">VERSION</td>
             <td>=</td>
-            <td class="attr-value">&#39;0.9.6&#39;</td>
+            <td class="attr-value">&#39;0.9.7&#39;</td>
           </tr>
           
             <tr valign='top'>
@@ -440,7 +440,7 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
         <div class="method">
           <div class="title method-title" id="method-c-stringify">
             
-              <b>stringify</b>( content, data = {}, delimiters: DELIMITERS, language: LANGUAGE, engines: ENGINES, excerpt: nil, excerpt_separator: nil )
+              <b>stringify</b>( content, data: {}, delimiters: DELIMITERS, language: LANGUAGE, engines: ENGINES, excerpt: nil, excerpt_separator: nil )
             
             <a href="../classes/RubyMatter.html#method-c-stringify" name="method-c-stringify" class="permalink">Link</a>
           </div>
@@ -496,7 +496,7 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
                 <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">stringify</span>(
   <span class="ruby-identifier">content</span>,
-  <span class="ruby-identifier">data</span> = {},
+  <span class="ruby-value">data:</span> {},
   <span class="ruby-value">delimiters:</span> <span class="ruby-constant">DELIMITERS</span>,
   <span class="ruby-value">language:</span> <span class="ruby-constant">LANGUAGE</span>,
   <span class="ruby-value">engines:</span> <span class="ruby-constant">ENGINES</span>,
@@ -505,7 +505,7 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
 )
   <span class="ruby-constant">RubyMatter</span><span class="ruby-operator">::</span><span class="ruby-constant">Stringifier</span>.<span class="ruby-identifier">new</span>(
     <span class="ruby-identifier">content</span>,
-    <span class="ruby-identifier">data</span>,
+    <span class="ruby-value">data:</span> <span class="ruby-identifier">data</span>,
     <span class="ruby-value">delimiters:</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">delimiters</span>),
     <span class="ruby-value">language:</span> <span class="ruby-identifier">language</span>,
     <span class="ruby-value">engines:</span> <span class="ruby-identifier">engines</span>.<span class="ruby-identifier">transform_keys</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_s</span>),

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ruby_matter (0.9.5)
+    ruby_matter (0.9.6)
 
 GEM
   remote: https://rubygems.org/

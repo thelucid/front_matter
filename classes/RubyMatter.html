@@ -234,7 +234,7 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
           <tr valign='top'>
             <td class="attr-name">VERSION</td>
             <td>=</td>
-            <td class="attr-value">&#39;0.9.5&#39;</td>
+            <td class="attr-value">&#39;0.9.6&#39;</td>
           </tr>
           
             <tr valign='top'>
@@ -450,7 +450,10 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
               <h2 id="method-c-stringify-label-Parameters">Parameters</h2>
 <dl class="rdoc-list note-list"><dt>content (String)
 <dd>
-<p>The content string that follows the from-matter.</p>
+<p>The content string that follows the front matter.</p>
+</dd><dt>data (Hash)
+<dd>
+<p>The data that forms the front matter.</p>
 </dd><dt>delimiters (Array|String)
 <dd>
 <p>Opening and closing delimiters. When a string is supplied, it is used as both delimiters. Defaults to &#39;---&#39;, as defined in <code>DELIMITERS</code> constant.</p>
@@ -490,7 +493,7 @@ stringify: -&gt;(hash) { JSON.pretty_generate(hash) }
                 
               </p>
               <div id="method-c-stringify_source" class="dyn-source">
-                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 176</span>
+                <pre><span class="ruby-comment"># File lib/ruby_matter.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">stringify</span>(
   <span class="ruby-identifier">content</span>,
   <span class="ruby-identifier">data</span> = {},

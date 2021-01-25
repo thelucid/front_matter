@@ -31,7 +31,7 @@ Or install it yourself as:
 
 ## Usage
 
-Below are common methods used for dealing with front matter. [See the API documentation](https://thelucid.github.io/ruby_matter/) for details on what arguments can be passed to each.
+Below are the common methods used when dealing with front matter. [See the API documentation](https://thelucid.github.io/ruby_matter/) for details on what arguments can be passed to each.
 
 ### Parse
 

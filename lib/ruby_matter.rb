@@ -143,7 +143,10 @@ module RubyMatter
 
   # == Parameters
   # content (String)::
-  #   The content string that follows the from-matter.
+  #   The content string that follows the front matter.
+  #
+  # data (Hash)::
+  #   The data that forms the front matter.
   #
   # delimiters (Array|String)::
   #   Opening and closing delimiters. When a string is

@@ -178,7 +178,7 @@ module RubyMatter
   #
   def self.stringify(
     content,
-    data = {},
+    data: {},
     delimiters: DELIMITERS,
     language: LANGUAGE,
     engines: ENGINES,
@@ -187,7 +187,7 @@ module RubyMatter
   )
     RubyMatter::Stringifier.new(
       content,
-      data,
+      data: data,
       delimiters: Array(delimiters),
       language: language,
       engines: engines.transform_keys(&:to_s),

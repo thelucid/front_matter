@@ -156,7 +156,7 @@ module RubyMatter
     def stringify
       RubyMatter::Stringifier.new(
         content,
-        data,
+        data: data,
         delimiters: @delimiters,
         language: language,
         engines: @engines,

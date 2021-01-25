@@ -18,7 +18,7 @@ class StringifyTest < RubyMatter::Test
   test 'uses custom delimiters to stringify' do
     actual = RubyMatter.stringify(
       'Name: {{name}}',
-      { 'name' => 'front matter' },
+      data: { 'name' => 'front matter' },
       delimiters: '~~~'
     )
 
@@ -28,7 +28,7 @@ class StringifyTest < RubyMatter::Test
   test 'stringifies an excerpt' do
     actual = RubyMatter.stringify(
       'Name: {{name}}',
-      { 'name' => 'front matter' },
+      data: { 'name' => 'front matter' },
       excerpt: 'This is an excerpt.'
     )
 
@@ -41,7 +41,7 @@ class StringifyTest < RubyMatter::Test
   test 'stringifies an excerpt with custom seperator' do
     actual = RubyMatter.stringify(
       'Name: {{name}}',
-      { 'name' => 'front matter' },
+      data: { 'name' => 'front matter' },
       excerpt: 'This is an excerpt.',
       excerpt_separator: '<!-- sep -->'
     )
@@ -57,7 +57,7 @@ class StringifyTest < RubyMatter::Test
       "---\n{\n  \"name\": \"front matter\"\n}\n---\nName: {{name}}\n",
       RubyMatter.stringify(
         "Name: {{name}}\n",
-        { 'name' => 'front matter' },
+        data: { 'name' => 'front matter' },
         language: 'json'
       )
     )

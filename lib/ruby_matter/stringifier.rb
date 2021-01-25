@@ -18,7 +18,7 @@ module RubyMatter
     #
     def initialize(
       content,
-      data,
+      data: {},
       delimiters:,
       language: nil,
       engines: {},

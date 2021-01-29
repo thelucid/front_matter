@@ -177,7 +177,7 @@ module RubyMatter
   #   and content.
   #
   def self.stringify(
-    content,
+    content = nil,
     data: {},
     delimiters: DELIMITERS,
     language: LANGUAGE,

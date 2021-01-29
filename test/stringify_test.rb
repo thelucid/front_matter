@@ -62,4 +62,15 @@ class StringifyTest < RubyMatter::Test
       )
     )
   end
+  
+  test 'stringifies with no content or data' do
+    assert_equal "", RubyMatter.stringify
+  end
+  
+  test 'stringifies with only data' do
+    assert_equal(
+      "---\nname: front matter\n---\n",
+      RubyMatter.stringify(data: { 'name' => 'front matter' })
+    )
+  end
 end

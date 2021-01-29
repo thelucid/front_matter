@@ -84,7 +84,7 @@ module RubyMatter
     end
 
     def content
-      newline(@content)
+      @content ? newline(@content) : ''
     end
 
     def newline(line)
